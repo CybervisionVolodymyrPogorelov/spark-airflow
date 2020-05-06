@@ -57,7 +57,7 @@ default_args = {
 print("Creating sparkApplication")
 print("Sleep")
 print("Sleep 2")
-time.sleep(20)
+time.sleep(10)
 
 dag = DAG(
     'spark_pi',
