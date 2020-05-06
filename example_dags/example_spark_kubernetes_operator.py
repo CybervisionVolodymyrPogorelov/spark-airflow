@@ -30,8 +30,8 @@ from datetime import timedelta
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 # Operators; we need this to operate!
-from operators.spark_kubernetes_operator import SparkKubernetesOperator
-from operators.spark_kubernetes_sensor import SparkKubernetesSensor
+from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
+from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.utils.dates import days_ago
 
 # [END import_module]
