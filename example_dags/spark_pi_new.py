@@ -5,8 +5,8 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.utils.dates import days_ago
 # Operators; we need this to operate!
-from operators.spark_kubernetes_operator import SparkKubernetesOperator
-from operators.spark_kubernetes_sensor import SparkKubernetesSensor
+from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
+from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 import yaml
 
 # [END import_module]
