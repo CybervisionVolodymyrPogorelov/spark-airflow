@@ -20,6 +20,7 @@ This is an example DAG which uses SparkKubernetesOperator and SparkKubernetesSen
 In this example, we create two tasks which execute sequentially.
 The first task is to submit sparkApplication on Kubernetes cluster(the example uses spark-pi application).
 and the second task is to check the final state of the sparkApplication that submitted in the first state.
+
 Spark-on-k8s operator is required to be already installed on Kubernetes
 https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
 """
@@ -40,10 +41,10 @@ from airflow.utils.dates import days_ago
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
 default_args = {
-    'owner': 'mapr',
+    'owner': 'airflow',
     'depends_on_past': False,
     'start_date': days_ago(1),
-    'email': ['avenherak@mapr.com'],
+    'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
     'max_active_runs': 1
@@ -76,3 +77,4 @@ t2 = SparkKubernetesSensor(
     dag=dag
 )
 t1 >> t2
+
