@@ -34,7 +34,6 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.utils.dates import days_ago
-import time
 
 # [END import_module]
 
@@ -53,11 +52,6 @@ default_args = {
 # [END default_args]
 
 # [START instantiate_dag]
-
-print("Creating sparkApplication")
-print("Sleep")
-print("Sleep 2")
-time.sleep(10)
 
 dag = DAG(
     'spark_pi',
