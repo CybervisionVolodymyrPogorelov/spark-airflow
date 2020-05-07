@@ -42,12 +42,7 @@ from airflow.utils.dates import days_ago
 # You can override them on a per-task basis during operator initialization
 default_args = {
     'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': days_ago(1),
-    'email': ['airflow@example.com'],
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'max_active_runs': 1
+    'start_date': days_ago(2),
 }
 # [END default_args]
 
@@ -56,9 +51,9 @@ default_args = {
 dag = DAG(
     'spark_pi',
     default_args=default_args,
-    description='submit spark-pi as sparkApplication on kubernetes',
-    schedule_interval=None,
+    schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
+    tags=['example']
 )
 
 spark = open("/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/cncf/kubernetes/example_dags/example_spark_kubernetes_operator_spark_pi.yaml").read()
