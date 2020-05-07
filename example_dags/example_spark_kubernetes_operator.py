@@ -57,7 +57,8 @@ dag = DAG(
     'spark_pi',
     default_args=default_args,
     description='submit spark-pi as sparkApplication on kubernetes',
-    schedule_interval=timedelta(days=1),
+    schedule_interval='0 0 * * *',
+    dagrun_timeout=timedelta(minutes=60),
 )
 
 spark = open("/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/cncf/kubernetes/example_dags/example_spark_kubernetes_operator_spark_pi.yaml").read()
