@@ -25,7 +25,7 @@ Spark-on-k8s operator is required to be already installed on Kubernetes
 https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
 """
 
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 # [START import_module]
 # The DAG object; we'll need this to instantiate a DAG
