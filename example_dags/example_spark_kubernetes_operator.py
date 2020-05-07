@@ -42,7 +42,7 @@ from airflow.utils.dates import days_ago
 # You can override them on a per-task basis during operator initialization
 default_args = {
     'owner': 'airflow',
-    'start_date': days_ago(2),
+    'start_date': datetime.strptime('May 7 2020  1:00PM', '%b %d %Y %I:%M%p'),
 }
 # [END default_args]
 
@@ -52,7 +52,7 @@ dag = DAG(
     'spark_pi',
     default_args=default_args,
     schedule_interval='0 0 * * *',
-    dagrun_timeout=timedelta(minutes=60),
+    dagrun_timeout=timedelta(minutes=5),
     tags=['example']
 )
 
