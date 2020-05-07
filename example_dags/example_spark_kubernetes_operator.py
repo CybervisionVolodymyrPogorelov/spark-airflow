@@ -57,7 +57,7 @@ dag = DAG(
     'spark_pi',
     default_args=default_args,
     description='submit spark-pi as sparkApplication on kubernetes',
-    schedule_interval='0 0 * * *',
+    schedule_interval=None,
     dagrun_timeout=timedelta(minutes=60),
 )
 
