@@ -42,6 +42,7 @@ from airflow.utils.dates import days_ago
 # You can override them on a per-task basis during operator initialization
 default_args = {
     'owner': 'airflow',
+    'depends_on_past': False,
     'start_date': datetime.strptime('May 7 2020  1:00PM', '%b %d %Y %I:%M%p'),
 }
 # [END default_args]
@@ -56,7 +57,8 @@ dag = DAG(
     tags=['example']
 )
 
-spark = open("/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/cncf/kubernetes/example_dags/example_spark_kubernetes_operator_spark_pi.yaml").read()
+spark = open(
+    "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/cncf/kubernetes/example_dags/example_spark_kubernetes_operator_spark_pi.yaml").read()
 
 t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
@@ -75,4 +77,3 @@ t2 = SparkKubernetesSensor(
     dag=dag
 )
 t1 >> t2
-
