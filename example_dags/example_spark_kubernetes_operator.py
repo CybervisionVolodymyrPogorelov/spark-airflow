@@ -58,7 +58,7 @@ dag = DAG(
 )
 
 spark = open(
-    "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/cncf/kubernetes/example_dags/example_spark_kubernetes_operator_spark_pi.yaml").read()
+    "example_spark_kubernetes_operator_spark_pi.yaml").read()
 
 t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
