@@ -57,13 +57,13 @@ dag = DAG(
     tags=['example']
 )
 
-spark = open(
-    "example_spark_kubernetes_operator_pi.yaml").read()
+# spark = open(
+#     "example_spark_kubernetes_operator_pi.yaml").read()
 
 t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
     namespace="mycspace",
-    application_file=spark,
+    application_file="example_spark_kubernetes_operator_pi.yaml",
     kubernetes_conn_id="kubernetes_default",
     do_xcom_push=True,
     dag=dag,
