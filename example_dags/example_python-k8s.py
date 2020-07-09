@@ -46,27 +46,27 @@ dag = DAG(
 
 start = DummyOperator(task_id='run_this_first', dag=dag)
 
-passing = KubernetesPodOperator(namespace='default',
+python_task = KubernetesPodOperator(namespace='default',
                           image="python:3.6",
                           cmds=["python","-c"],
                           arguments=["print('hello world')"],
                           labels={"foo": "bar"},
-                          name="passing-test",
-                          task_id="passing-task",
+                          name="passing-python",
+                          task_id="passing-task-python",
                           get_logs=True,
                           dag=dag
                           )
 
-failing = KubernetesPodOperator(namespace='default',
+bash_task = KubernetesPodOperator(namespace='default',
                           image="ubuntu:1604",
-                          cmds=["python","-c"],
-                          arguments=["print('hello world')"],
+                          cmds=["bash", "-cx"],
+                          arguments=["echo", "10"],
                           labels={"foo": "bar"},
-                          name="fail",
-                          task_id="failing-task",
+                          name="passing-bash",
+                          task_id="passing-task-bash",
                           get_logs=True,
                           dag=dag
                           )
 
-passing.set_upstream(start)
-failing.set_upstream(start)
+python_task.set_upstream(start)
+bash_task.set_upstream(start)
