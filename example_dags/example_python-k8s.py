@@ -58,7 +58,7 @@ python_task = KubernetesPodOperator(namespace='default',
                           )
 
 bash_task = KubernetesPodOperator(namespace='default',
-                          image="ubuntu:1604",
+                          image="ubuntu:16.04",
                           cmds=["bash", "-cx"],
                           arguments=["echo", "10"],
                           labels={"foo": "bar"},
