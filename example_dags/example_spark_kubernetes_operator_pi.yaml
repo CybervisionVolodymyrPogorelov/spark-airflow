@@ -21,7 +21,7 @@ metadata:
   namespace: mycspace # example - externalcspace
 spec:
   sparkConf:
-    spark.mapr.user.secret: mapr-user-secret-1499023078
+    spark.mapr.user.secret: mapr-user-secret-812502057
     spark.eventLog.enabled: "true"
     spark.eventLog.dir: "maprfs:///apps/spark/mycspace" # example - maprfs:///apps/spark/externalcspace
   type: Scala
