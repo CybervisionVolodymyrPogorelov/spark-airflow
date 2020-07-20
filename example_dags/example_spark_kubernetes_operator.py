@@ -43,7 +43,11 @@ from airflow.utils.dates import days_ago
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime.strptime('May 7 2020  1:00PM', '%b %d %Y %I:%M%p'),
+    'start_date': days_ago(1),
+    'email': ['airflow@example.com'],
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'max_active_runs': 1
 }
 # [END default_args]
 
@@ -52,8 +56,7 @@ default_args = {
 dag = DAG(
     'spark_pi',
     default_args=default_args,
-    schedule_interval=timedelta(minutes=5),
-    dagrun_timeout=timedelta(minutes=5),
+    schedule_interval=timedelta(days=1),
     tags=['example']
 )
 
@@ -62,7 +65,7 @@ dag = DAG(
 
 t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
-    namespace="mycspace",
+    namespace="default",
     application_file="example_spark_kubernetes_operator_pi.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
@@ -71,7 +74,7 @@ t1 = SparkKubernetesOperator(
 
 t2 = SparkKubernetesSensor(
     task_id='spark_pi_monitor',
-    namespace="mycspace",
+    namespace="default",
     application_name="{{ task_instance.xcom_pull(task_ids='spark_pi_submit')['metadata']['name'] }}",
     kubernetes_conn_id="kubernetes_in_cluster",
     dag=dag
