@@ -70,8 +70,6 @@ t1 = SparkKubernetesOperator(
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
     dag=dag,
-    get_logs=True,
-    is_delete_operator_pod=True
 )
 
 t2 = SparkKubernetesSensor(
