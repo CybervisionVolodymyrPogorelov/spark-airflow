@@ -25,7 +25,7 @@ spec:
     spark.eventLog.enabled: "true"
     spark.eventLog.dir: "maprfs:///apps/spark/mycspace" # example - maprfs:///apps/spark/externalcspace
   type: Scala
-  sparkVersion: 2.4.4
+  sparkVersion: "2.4.4"
   mode: cluster
   image: gcr.io/mapr-hpe/spark-2.4.4:201912180140
   imagePullPolicy: Always
