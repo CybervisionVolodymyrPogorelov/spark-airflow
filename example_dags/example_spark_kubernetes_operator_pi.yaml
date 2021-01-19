@@ -18,7 +18,7 @@ apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
   name: spark-pi
-  namespace: mycspace # example - externalcspace
+  namespace: sampletenant # example - externalcspace
 spec:
   sparkConf:
     spark.mapr.user.secret: mapr-user-secret-812502057
@@ -41,7 +41,7 @@ spec:
     memory: "512m"
     labels:
       version: 2.4.4
-    serviceAccount: mapr-mycspace-cspace-sa # example - mapr-mycspace-cspace-sa
+    serviceAccount: hpe-sampletenant # example - mapr-mycspace-cspace-sa
   executor:
     cores: 1
     instances: 1
