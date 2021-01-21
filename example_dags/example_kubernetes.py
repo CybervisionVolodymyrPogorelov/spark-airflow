@@ -48,7 +48,6 @@ with DAG(
     ]
 
     k = KubernetesPodOperator(
-        namespace='mycspace',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
         arguments=["echo", "10"],
