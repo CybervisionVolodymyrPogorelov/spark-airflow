@@ -54,7 +54,6 @@ with DAG(
         arguments=["echo", "10"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
-        in_cluster=False,
         task_id="task",
         get_logs=True,
         is_delete_operator_pod=False,
