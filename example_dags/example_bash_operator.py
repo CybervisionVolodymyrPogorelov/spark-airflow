@@ -46,7 +46,7 @@ run_this_last = DummyOperator(
 # [START howto_operator_bash]
 run_this = BashOperator(
     task_id='run_after_loop',
-    bash_command='sleep infinity',
+    bash_command='sleep 1',
     dag=dag,
 )
 # [END howto_operator_bash]
