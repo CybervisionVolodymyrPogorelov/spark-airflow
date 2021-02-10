@@ -33,7 +33,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='example_kubernetes_operator_test',
+    dag_id='example_kubernetes_operator_test_wooop',
     default_args=default_args,
     schedule_interval=None,
     tags=['example', 'test', 'new label'],
