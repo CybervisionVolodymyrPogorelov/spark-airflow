@@ -36,7 +36,7 @@ with DAG(
     dag_id='example_kubernetes_operator_test',
     default_args=default_args,
     schedule_interval=None,
-    tags=['example', 'test'],
+    tags=['example', 'test', 'new label'],
 ) as dag:
 
     tolerations = [
