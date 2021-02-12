@@ -58,7 +58,7 @@ dag = DAG(
     'spark_pi',
     default_args=default_args,
     schedule_interval=timedelta(days=1),
-    tags=['example']
+    tags=['example', 'updated']
 )
 
 # spark = open(
