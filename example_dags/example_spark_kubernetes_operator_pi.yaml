@@ -53,5 +53,5 @@ spec:
     memory: "512m"
     labels:
       version: 2.4.5
-  securityContext:
-    runAsUser: 5008
+  seLinuxOptions:
+    user: "nkili"
