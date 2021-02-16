@@ -53,5 +53,3 @@ spec:
     memory: "512m"
     labels:
       version: 2.4.5
-  seLinuxOptions:
-    user: "nkili"
