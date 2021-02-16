@@ -70,7 +70,6 @@ submit = SparkKubernetesOperator(
     application_file="example_spark_kubernetes_operator_pi.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
-    run_as_user="nkili",
     dag=dag,
 )
 
