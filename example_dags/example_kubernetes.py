@@ -51,7 +51,7 @@ with DAG(
         namespace='default',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
-        arguments=["echo", "sample"],
+        arguments=["echo hello here"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_id="task",
