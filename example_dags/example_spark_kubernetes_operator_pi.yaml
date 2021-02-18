@@ -19,7 +19,7 @@ kind: SparkApplication
 metadata:
   generateName: spark-pi-secure-
 spec:
-  sparkConf:
+  # sparkConf:
     # Note: If you are executing the application as a K8 user that MapR can verify,
     #       you do not need to specify a spark.mapr.user.secret
     #spark.mapr.user.secret: mapr-user-secret-812502057
@@ -45,7 +45,7 @@ spec:
       version: 2.4.5
     # Note: You do not need to specify a serviceAccount
     #       it will be auto-generated referencing the pre-existing "hpe-<namespace>"
-  serviceAccount: airflow-service-account
+    # serviceAccount: airflow-service-account
   executor:
     cores: 1
     coreLimit: "1000m"
