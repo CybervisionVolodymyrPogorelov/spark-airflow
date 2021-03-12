@@ -70,7 +70,8 @@ submit = SparkKubernetesOperator(
     application_file="example_spark_kubernetes_operator_pi.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
-    dag=dag
+    dag=dag,
+    api_group="sparkoperator.hpe.com"
 )
 
 sensor = SparkKubernetesSensor(
