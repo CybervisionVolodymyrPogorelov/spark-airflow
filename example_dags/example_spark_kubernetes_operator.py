@@ -84,4 +84,24 @@ sensor = SparkKubernetesSensor(
     attach_log=True
 )
 
-submit >> sensor
+submit2 = SparkKubernetesOperator(
+    task_id='spark_wc_submit',
+    namespace="sampletenant",
+    application_file="example_spark_kubernetes_operator_wc.yaml",
+    kubernetes_conn_id="kubernetes_in_cluster",
+    do_xcom_push=True,
+    dag=dag,
+    api_group="sparkoperator.hpe.com"
+)
+
+sensor2 = SparkKubernetesSensor(
+    task_id='spark_wc_monitor',
+    namespace="sampletenant",
+    application_name="{{ task_instance.xcom_pull(task_ids='spark_wc_submit')['metadata']['name'] }}",
+    kubernetes_conn_id="kubernetes_in_cluster",
+    dag=dag,
+    api_group="sparkoperator.hpe.com",
+    attach_log=True
+)
+
+submit >> sensor >> submit2 >> sensor2
