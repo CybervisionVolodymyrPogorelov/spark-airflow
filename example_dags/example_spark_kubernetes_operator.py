@@ -104,4 +104,4 @@ sensor2 = SparkKubernetesSensor(
     attach_log=True
 )
 
-submit >> sensor >> submit2 >> sensor2
+submit >> submit2 >> sensor >> sensor2
