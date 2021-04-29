@@ -66,7 +66,7 @@ dag = DAG(
 
 submit = SparkKubernetesOperator(
     task_id='spark_pi_submit',
-    namespace="t1",
+    namespace="sampletenant",
     application_file="example_spark_kubernetes_operator_pi.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
@@ -76,7 +76,7 @@ submit = SparkKubernetesOperator(
 
 sensor = SparkKubernetesSensor(
     task_id='spark_pi_monitor',
-    namespace="t1",
+    namespace="sampletenant",
     application_name="{{ task_instance.xcom_pull(task_ids='spark_pi_submit')['metadata']['name'] }}",
     kubernetes_conn_id="kubernetes_in_cluster",
     dag=dag,
@@ -86,7 +86,7 @@ sensor = SparkKubernetesSensor(
 
 submit2 = SparkKubernetesOperator(
     task_id='spark_wc_submit',
-    namespace="t1",
+    namespace="sampletenant",
     application_file="example_spark_kubernetes_operator_wc.yaml",
     kubernetes_conn_id="kubernetes_in_cluster",
     do_xcom_push=True,
@@ -96,7 +96,7 @@ submit2 = SparkKubernetesOperator(
 
 sensor2 = SparkKubernetesSensor(
     task_id='spark_wc_monitor',
-    namespace="t1",
+    namespace="sampletenant",
     application_name="{{ task_instance.xcom_pull(task_ids='spark_wc_submit')['metadata']['name'] }}",
     kubernetes_conn_id="kubernetes_in_cluster",
     dag=dag,
