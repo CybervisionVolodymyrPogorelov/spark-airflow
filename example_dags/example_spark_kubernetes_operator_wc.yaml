@@ -17,7 +17,7 @@
 apiVersion: "sparkoperator.hpe.com/v1beta2"
 kind: SparkApplication
 metadata:
-  name: spark-wordcount-secure-2
+  generateName: spark-wordcount-
   namespace: sampletenant
 spec:
   #sparkConf:
